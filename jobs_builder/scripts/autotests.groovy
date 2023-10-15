@@ -1,3 +1,4 @@
+import org.jenkinsci.plugins.pipeline.modeldefinition.Utils
 timeout(60){
     node("maven"){
         currentBuild.description= "BRANCH=${BRANCH}\nBASE_URL=${BASE_URL}"
