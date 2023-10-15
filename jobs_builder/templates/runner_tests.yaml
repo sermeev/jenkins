@@ -1,0 +1,52 @@
+- job-template:
+    name: 'runner-autotests'
+    description: 'Running autotests'
+    project-type: pipeline
+    concurrent: true
+    logrotate:
+      daysToKeep: 30
+      numToKeep: 10
+    parameters:
+      - string:
+          name: BRANCH 
+          default: master
+          descriptions: "Branch"
+      -  string:
+          name: BASE_URI
+          default: https://petstore.swagger.io/v2/
+          descriptions: "Hostname of stand API"
+      -  string:
+          name: BASE_URL
+          default: https://otus.ru
+          descriptions: "Hostname of stand UI"   
+      -  string:
+          name: ADDRESS_SERVER
+          default: 127.0.0.1:4723
+          descriptions: "Address server"
+      -  string:
+          name: PLATFORM_NAME
+          default: Android
+          descriptions: "Platform name"    
+      -  string:
+          name: DEVICE_NAME
+          default: otus
+          descriptions: "Device name"
+      -  string:
+          name: PLATFORM_VERSION
+          default: 5.1
+          descriptions: "Platform version"      
+      - extended-choice:
+          name: JOB_RUNNER
+          description: Tests type
+          quote-value: false
+          visible-items: 5
+          type: multi-select
+          default-value: api,ui,mobile
+          value: api,ui,mobile
+      - text:
+          name: CONFIG
+               
+    pipeline-scm:
+      scm:
+      - git-runner-autotests
+      script-path: jobs_builder/scripts/autotests.groovy

@@ -1,0 +1,24 @@
+- job-template:
+    name: 'ui-autotests'
+    description: 'Running UI autotests'
+    project-type: pipeline
+    concurrent: true
+    logrotate:
+      daysToKeep: 30
+      numToKeep: 10
+    parameters:
+      - string:
+          name: BRANCH 
+          default: master
+          descriptions: "Branch"
+      -  string:
+          name: BASE_URL
+          default: https://otus.ru
+          descriptions: "Hostname of stand"
+      - text:
+          name: CONFIG
+          
+    pipeline-scm:
+      scm:
+      - git-ui-autotests
+      script-path: jenkins/autotests.groovy

@@ -1,0 +1,36 @@
+- job-template:
+    name: 'mobile-autotests'
+    description: 'Running Mobile autotests'
+    project-type: pipeline
+    concurrent: true
+    logrotate:
+      daysToKeep: 30
+      numToKeep: 10
+    parameters:
+      - string:
+          name: BRANCH 
+          default: master
+          descriptions: "Branch"
+      -  string:
+          name: ADDRESS_SERVER
+          default: 127.0.0.1:4723
+          descriptions: "Address server"
+      -  string:
+          name: PLATFORM_NAME
+          default: Android
+          descriptions: "Platform name"    
+      -  string:
+          name: DEVICE_NAME
+          default: otus
+          descriptions: "Device name"
+      -  string:
+          name: PLATFORM_VERSION
+          default: 5.1
+          descriptions: "Platform version"            
+      - text:
+          name: CONFIG
+          
+    pipeline-scm:
+      scm:
+      - git-mobile-autotests
+      script-path: jenkins/autotests.groovy

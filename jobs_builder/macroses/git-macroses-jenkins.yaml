@@ -1,0 +1,39 @@
+---
+
+- scm:
+    name: git-ui-autotests
+    scm:
+    - git:
+        url: git@github.com:sermeev/TasksQAPro.git
+        credentials-id: jenkins
+        branches:
+        - FETCH_HEAD
+        refspec: ${BRANCH}
+- scm:
+    name: git-api-autotests
+    scm:
+    - git:
+        url: git@github.com:sermeev/QAPROAPI.git
+        credentials-id: jenkins
+        branches:
+        - FETCH_HEAD
+        refspec: ${BRANCH}        
+- scm:
+    name: git-mobile-autotests
+    scm:
+    - git:
+        url: git@github.com:sermeev/QAPROMOBILE.git
+        credentials-id: jenkins
+        branches:
+        - FETCH_HEAD
+        refspec: ${BRANCH}      
+- scm:
+    name: git-runner-autotests
+    scm:
+    - git:
+        url: git@github.com:sermeev/jenkins.git
+        credentials-id: jenkins
+        branches:
+        - FETCH_HEAD
+        refspec: ${BRANCH}           
+        

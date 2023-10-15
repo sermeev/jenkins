@@ -1,0 +1,24 @@
+- job-template:
+    name: 'api-autotests'
+    description: 'Running API autotests'
+    project-type: pipeline
+    concurrent: true
+    logrotate:
+      daysToKeep: 30
+      numToKeep: 10
+    parameters:
+      - string:
+          name: BRANCH 
+          default: master
+          descriptions: "Branch"
+      -  string:
+          name: BASE_URI
+          default: https://petstore.swagger.io/v2/
+          descriptions: "Hostname of stand"
+      - text:
+          name: CONFIG
+          
+    pipeline-scm:
+      scm:
+      - git-api-autotests
+      script-path: jenkins/autotests.groovy
