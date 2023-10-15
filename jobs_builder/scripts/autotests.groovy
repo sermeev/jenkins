@@ -22,7 +22,7 @@ timeout(60){
                             }
                         } else {
                             echo 'Skipping stage...'
-                            Utils.markStageSkippedForConditional('keystone ui tests')
+                            Utils.markStageSkippedForConditional('UI tests')
                         }
                     }
                 }
@@ -40,7 +40,7 @@ timeout(60){
                             }
                         } else {
                             echo 'Skipping stage...'
-                            Utils.markStageSkippedForConditional('keystone api tests')
+                            Utils.markStageSkippedForConditional('API tests')
                         }
                     }
                 }
@@ -60,7 +60,7 @@ timeout(60){
                             }
                         } else {
                             echo 'Skipping stage...'
-                            Utils.markStageSkippedForConditional('keystone mobile tests')
+                            Utils.markStageSkippedForConditional('Mobile tests')
                         }
                     }
                 }
