@@ -13,7 +13,7 @@
           descriptions: "Branch"
       -  string:
           name: ADDRESS_SERVER
-          default: 127.0.0.1:4723
+          default: 11.4.83.118:4723
           descriptions: "Address server"
       -  string:
           name: PLATFORM_NAME
