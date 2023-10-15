@@ -14,7 +14,7 @@ timeout(60){
                     stage('UI tests') {
                         if('ui' in runnerJobs) {
                             catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
-                                build(job: 'ui-tests',
+                                build(job: 'ui-autotests',
                                         parameters: [
                                                 string(name: 'BRANCH', value: BRANCH),
                                                 string(name: 'BASE_URL', value: BASE_URL),
@@ -22,7 +22,7 @@ timeout(60){
                             }
                         } else {
                             echo 'Skipping stage...'
-                            Utils.markStageSkippedForConditional('keystone api tests')
+                            Utils.markStageSkippedForConditional('keystone ui tests')
                         }
                     }
                 }
@@ -32,7 +32,7 @@ timeout(60){
                     stage('API tests') {
                         if('api' in runnerJobs) {
                             catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
-                                build(job: 'ui-tests',
+                                build(job: 'api-autotests',
                                         parameters: [
                                                 string(name: 'BRANCH', value: BRANCH),
                                                 string(name: 'BASE_URI', value: BASE_URL),
@@ -50,7 +50,7 @@ timeout(60){
                     stage('Mobile tests') {
                         if('mobile' in runnerJobs) {
                             catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
-                                build(job: 'ui-tests',
+                                build(job: 'mobile-autotests',
                                         parameters: [
                                                 string(name: 'BRANCH', value: BRANCH),
                                                 string(name: 'ADDRESS_SERVER', value: ADDRESS_SERVER),
@@ -60,7 +60,7 @@ timeout(60){
                             }
                         } else {
                             echo 'Skipping stage...'
-                            Utils.markStageSkippedForConditional('keystone api tests')
+                            Utils.markStageSkippedForConditional('keystone mobile tests')
                         }
                     }
                 }
