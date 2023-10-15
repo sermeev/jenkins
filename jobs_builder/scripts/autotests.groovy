@@ -9,8 +9,8 @@ timeout(60){
             def runnerJobs = "$JOB_RUNNER".split(",")
             echo "$JOB_RUNNER"
             jobs['ui_autotests'] = {
-                node('maven-slave') {
-                    stage('Ui tests') {
+                node('maven') {
+                    stage('UI tests') {
                         if('ui' in runnerJobs) {
                             catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
                                 build(job: 'ui-tests',
@@ -27,8 +27,8 @@ timeout(60){
                 }
             }
             jobs['api_autotests'] = {
-                node('maven-slave') {
-                    stage('api tests') {
+                node('maven') {
+                    stage('API tests') {
                         if('api' in runnerJobs) {
                             catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
                                 build(job: 'ui-tests',
@@ -45,7 +45,7 @@ timeout(60){
                 }
             }
             jobs['mobile_autotests'] = {
-                node('maven-slave') {
+                node('maven') {
                     stage('Mobile tests') {
                         if('mobile' in runnerJobs) {
                             catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
