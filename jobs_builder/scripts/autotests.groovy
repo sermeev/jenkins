@@ -6,7 +6,7 @@ timeout(60){
         }
         stage('Run tests') {
             def jobs = [:]
-            def runnerJobs = "$TEST_TYPE".split(",")
+            def runnerJobs = "$JOB_RUNNER".split(",")
 
             jobs['ui_autotests'] = {
                 node('maven-slave') {
